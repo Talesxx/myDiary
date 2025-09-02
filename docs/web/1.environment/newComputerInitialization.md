@@ -44,7 +44,7 @@ mkdir ~/.nvm
 - mac可能需要配环境变量。在你的home中编辑以下配置文件，在 `~/.bash_profile`（或`~/.zshrc`，用于macOS Catalina或更高版本）中添加以下几行
 ```bash
 export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+source$(brew --prefix nvm)/nvm.sh
 ```
 
 - 按ESC + `:wq` 保存并关闭你的文件。
