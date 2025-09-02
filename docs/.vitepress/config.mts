@@ -60,7 +60,21 @@ export default defineConfig({
         text: 'web前端',
         collapsed:true,
         items:[
-          { text: '环境安装与配置', link: '/web/1.environment/newComputerInitialization' },
+            {
+              text: '环境安装与配置',
+              collapsed:true,
+              items:[
+                { text: '环境安装与配置', link: '/web/1.environment/newComputerInitialization' },
+              ]
+            },
+            {
+              text: '包开发',
+              collapsed:true,
+              items:[
+                { text: 'npm包快速联调', link: '/web/2.npmPackage/fastJointDebug' },
+              ]
+            },
+         
         ]
       }
     ],
