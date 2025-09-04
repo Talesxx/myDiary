@@ -18,9 +18,10 @@ features:
   - title: web前端
     details: 有关前端相关文档
     link: /web/1.environment/newComputerInitialization
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: 数学
+    details: 有关数学的笔记
+    link: /AdvancedMathematics/1.对数计算法则
+  - title: 英语
+    details: 英语学习
 ---
 
