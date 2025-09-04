@@ -74,6 +74,13 @@ export default defineConfig({
                 { text: 'npm包快速联调', link: '/web/2.npmPackage/fastJointDebug' },
               ]
             },
+            {
+              text: '音视频',
+              collapsed:true,
+              items:[
+                { text: 'webRTC', link: '/web/3.videoOrAudio/webRTC简易教程' },
+              ]
+            }
          
         ]
       }
