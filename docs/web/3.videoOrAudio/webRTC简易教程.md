@@ -1,6 +1,20 @@
 # RTC简易demo
 
 
+### 
+借助 WebRTC，您可以为应用添加基于开放标准运行的`实时通信功能`，支持在对等设备之间发送`视频`、`语音`和`通用数据`。
+
+
+1. 枚举设备`navigator.mediaDevices.enumerateDevices()`  
+2. 获取设备媒体流`navigator.mediaDevices.getUserMedia()`
+3. 获取设备屏幕媒体流`navigator.mediaDevices.getDisplayMedia()`
+4. RTC对等连接`RTCPeerConnection`
+
+5. TURN 服务器
+6. STUN 服务器
+7. 信令服务器
+8. SDP信息
+9. ICE候选人
 
 
 
@@ -39,13 +53,7 @@
 
 
 
-
-
-
-
-
-
-常见问题
+### 常见问题
 1.navigator.mediaDevices.getUserMedia 获取权限前，
 navigator.mediaDevices.enumerateDevices 获取设备信息 label 为空字符串
 2.mDNS可能导致外网不上传
