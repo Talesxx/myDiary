@@ -1,0 +1,36 @@
+name: buildDocs
+permissions:
+  contents: write
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 22.x]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install dependencies  
+      run: npm install  
+  
+    - name: Build project  
+      run: npm run docs:build  
+    - name: Deploy to GitHub Pages  
+      if: success() # 只有当前面的步骤都成功时才执行部署  
+      uses: JamesIves/github-pages-deploy-action@v4.2.5  
+      with:  
+        branch: gh-pages # 部署到的分支，通常是 gh-pages  
+        folder: docs/.vitepress/dist # 要部署的文件夹，即构建输出的文件夹  
+        clean: true # 在部署前清空 gh-pages 分支的内容  
+        token: ${{ secrets.GITHUB_TOKEN }} # 使用 GitHub 提供的 token
