@@ -6,15 +6,16 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-// @ts-ignore
-import APlayer from 'aplayer'
+
 import 'aplayer/dist/APlayer.min.css'
 
 const playerRef = ref<HTMLElement>()
-let player: APlayer | null = null
+let player: any | null = null
 
-onMounted(() => {
+onMounted(async () => {
   if (playerRef.value) {
+    // @ts-ignore 
+    const APlayer = (await import('aplayer')).default
     // 配置音乐列表
     const options = {
       container: playerRef.value,
