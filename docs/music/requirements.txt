@@ -1,0 +1,5 @@
+# 批量视频转音频脚本的依赖文件
+# 使用方法: pip install -r requirements.txt
+
+# 用于显示进度条的库
+tqdm>=4.65.0

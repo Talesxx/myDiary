@@ -32,20 +32,28 @@ onMounted(() => {
       lrcType: 3,
       audio: [
         {
-          name: '示例音乐1',
-          artist: '未知艺术家',
-          url: '', // 请替换为实际的音乐URL
-          cover: '', // 请替换为实际的封面URL
+          name: '不得不爱',
+          artist: 'AI心夏',
+          url: '../../../music/audio/【AI心夏】《不得不爱》.mp3', 
+          cover: '', 
           lrc: '',
           theme: '#ebd0c2'
         },
         {
-          name: '示例音乐2',
-          artist: '未知艺术家',
-          url: '', // 请替换为实际的音乐URL
-          cover: '', // 请替换为实际的封面URL
+          name: '生日快乐歌',
+          artist: 'AI心夏',
+          url: '../../../music/audio/【AI心夏】生日快乐歌.mp3', 
+          cover: '', 
           lrc: '',
           theme: '#46718b'
+        },
+        {
+          name: '有点甜',
+          artist: 'AI香奈美&AI心夏',
+          url: '../../../music/audio/【AI香奈美&AI心夏】《有点甜》用心刻画最幸福的风格~.mp3', 
+          cover: '', 
+          lrc: '',
+          theme: '#f9f0ff'
         }
       ]
     }
