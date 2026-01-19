@@ -17,7 +17,7 @@ onMounted(async () => {
     // @ts-ignore 
     const APlayer = (await import('aplayer')).default
     // 在客户端环境中获取基础URL
-    const clientBaseUrl = typeof window !== 'undefined' ? window.location.origin + DevBaseURL : DevBaseURL;
+    const clientBaseUrl = typeof window !== 'undefined' ? window.location.origin + BaseURL : BaseURL;
     // 配置音乐列表
     const options = {
       container: playerRef.value,
