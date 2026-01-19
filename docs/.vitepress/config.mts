@@ -93,8 +93,14 @@ export default withMermaid(defineConfig({
               { text: '浏览器渲染过程', link: '/web/4.interviewQuest/browser_rendering_detailed' },
               { text: '渲染过程图', link: '/web/4.interviewQuest/renderingProcess' },
             ]
-          }
-
+          },
+          {
+            text: '其他',
+            collapsed: true,
+            items: [
+              { text: 'ts导出问题', link: '/web/5.stepOnTheTrap/ts导出问题' },
+            ]
+          },
         ]
       }
     ],
