@@ -4,6 +4,14 @@ import { withMermaid } from "vitepress-plugin-mermaid";
 
 // https://vitepress.dev/reference/site-config
 export default withMermaid(defineConfig({
+
+  // lastUpdated: true,
+  // cleanUrls: true,
+  // // 配置静态资源处理
+  vite: {
+    publicDir: 'docsPublic',
+  },
+
   markdown: {
     math: true,
     config: (md) => {

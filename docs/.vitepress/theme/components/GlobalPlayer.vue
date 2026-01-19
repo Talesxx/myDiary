@@ -6,9 +6,9 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-
 import 'aplayer/dist/APlayer.min.css'
-
+//获取当前页面的baseURL路径，用于拼接音频地址
+const BaseURL = import.meta.env.BASE_URL;
 const playerRef = ref<HTMLElement>()
 let player: any | null = null
 
@@ -16,6 +16,8 @@ onMounted(async () => {
   if (playerRef.value) {
     // @ts-ignore 
     const APlayer = (await import('aplayer')).default
+    // 在客户端环境中获取基础URL
+    const clientBaseUrl = typeof window !== 'undefined' ? window.location.origin + DevBaseURL : DevBaseURL;
     // 配置音乐列表
     const options = {
       container: playerRef.value,
@@ -35,7 +37,7 @@ onMounted(async () => {
         {
           name: '不得不爱',
           artist: 'AI心夏',
-          url: '../../../music/audio/【AI心夏】《不得不爱》.mp3', 
+          url: clientBaseUrl + '/audio/【AI心夏】《不得不爱》.mp3', 
           cover: '', 
           lrc: '',
           theme: '#ebd0c2'
@@ -43,7 +45,7 @@ onMounted(async () => {
         {
           name: '生日快乐歌',
           artist: 'AI心夏',
-          url: '../../../music/audio/【AI心夏】生日快乐歌.mp3', 
+          url: clientBaseUrl + '/audio/【AI心夏】生日快乐歌.mp3', 
           cover: '', 
           lrc: '',
           theme: '#46718b'
@@ -51,7 +53,7 @@ onMounted(async () => {
         {
           name: '有点甜',
           artist: 'AI香奈美&AI心夏',
-          url: '../../../music/audio/【AI香奈美&AI心夏】《有点甜》用心刻画最幸福的风格~.mp3', 
+          url: clientBaseUrl + '/audio/【AI香奈美&AI心夏】《有点甜》用心刻画最幸福的风格~.mp3', 
           cover: '', 
           lrc: '',
           theme: '#f9f0ff'
