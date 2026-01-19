@@ -1,1 +1,0 @@
-import{_ as e,c as a,o as t}from"./chunks/framework.DtYHlI_0.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"web/2.npmPackage/package.md","filePath":"web/2.npmPackage/package.md"}'),c={name:"web/2.npmPackage/package.md"};function n(p,r,o,s,m,_){return t(),a("div")}const k=e(c,[["render",n]]);export{i as __pageData,k as default};
