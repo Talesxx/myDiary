@@ -22,7 +22,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Install dependencies  
-      run: npm install  
+      run: npm install --legacy-peer-deps #使用了vitepress-plugin-mermaid 需要强行适配
   
     - name: Build project  
       run: npm run docs:build  
