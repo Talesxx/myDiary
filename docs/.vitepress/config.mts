@@ -101,6 +101,13 @@ export default withMermaid(defineConfig({
               { text: 'ts导出问题', link: '/web/5.stepOnTheTrap/ts导出问题' },
             ]
           },
+          {
+            text: 'React',
+            collapsed: true,
+            items: [
+              { text: 'React useEffect', link: '/web/12.react/react_useEffect' },
+            ]
+          },
         ]
       }
     ],
