@@ -1,0 +1,1 @@
+import{_ as e,o as a,c as t}from"./chunks/framework.C3ayHplB.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"web/2.npmPackage/package.md","filePath":"web/2.npmPackage/package.md"}'),c={name:"web/2.npmPackage/package.md"};function n(p,r,o,s,m,_){return a(),t("div")}const k=e(c,[["render",n]]);export{i as __pageData,k as default};
