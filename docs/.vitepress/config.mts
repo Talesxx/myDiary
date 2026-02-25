@@ -116,6 +116,15 @@ export default withMermaid(defineConfig({
               { text: 'React useEffect', link: '/web/12.react/react_useEffect' },
             ]
           },
+          {
+            text: '3D',
+            collapsed: true,
+            items: [
+              { text: '3D模型问题', link: '/web/6.3D/3D模型问题' },
+            ]
+          },
+
+
         ]
       }
     ],
