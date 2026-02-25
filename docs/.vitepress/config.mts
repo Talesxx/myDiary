@@ -128,9 +128,10 @@ export default withMermaid(defineConfig({
         ]
       }
     ],
-
+    // https://icon-sets.iconify.design/simple-icons/page-3.html?keyword=simple-icons
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/Talesxx/myDiary' }
+      { icon: 'github', link: 'https://github.com/Talesxx/myDiary' },
+      { icon: 'gmail', link: 'mailto:talesxiao@gmail.com' }
     ]
   }
 }))
