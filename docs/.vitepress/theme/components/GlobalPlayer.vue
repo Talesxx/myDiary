@@ -37,24 +37,24 @@ onMounted(async () => {
         {
           name: '不得不爱',
           artist: 'AI心夏',
-          url: clientBaseUrl + '/audio/【AI心夏】《不得不爱》.mp3', 
-          cover: '', 
+          url: clientBaseUrl + '/audio/【AI心夏】《不得不爱》/audio.mp3', 
+          cover: clientBaseUrl + '/audio/【AI心夏】《不得不爱》/cover.jpg', 
           lrc: '',
           theme: '#ebd0c2'
         },
         {
           name: '生日快乐歌',
           artist: 'AI心夏',
-          url: clientBaseUrl + '/audio/【AI心夏】生日快乐歌.mp3', 
-          cover: '', 
+          url: clientBaseUrl + '/audio/【AI心夏】生日快乐歌/audio.mp3', 
+          cover: clientBaseUrl + '/audio/【AI心夏】生日快乐歌/cover.jpg', 
           lrc: '',
           theme: '#46718b'
         },
         {
           name: '有点甜',
           artist: 'AI香奈美&AI心夏',
-          url: clientBaseUrl + '/audio/【AI香奈美&AI心夏】《有点甜》用心刻画最幸福的风格~.mp3', 
-          cover: '', 
+          url: clientBaseUrl + '/audio/【AI香奈美&AI心夏】《有点甜》用心刻画最幸福的风格/audio.mp3', 
+          cover: clientBaseUrl + '/audio/【AI香奈美&AI心夏】《有点甜》用心刻画最幸福的风格/cover.jpg', 
           lrc: '',
           theme: '#f9f0ff'
         }

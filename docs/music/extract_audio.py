@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-批量视频转音频脚本
-功能：将video目录中的所有视频文件提取音频并保存到audio目录
-作者：AI Assistant
-日期：2024
+批量视频转音频和提取封面脚本
+功能：将video目录中的所有视频文件提取音频和封面图并保存到按视频名命名的子目录中
 """
 
 import os
@@ -59,6 +57,35 @@ def extract_audio_from_video(video_path, audio_output_path, quality=320):
         print(f"错误: 处理文件 {os.path.basename(video_path)} 失败 - {e}")
         return False
 
+def extract_thumbnail_from_video(video_path, thumbnail_output_path):
+    """
+    从单个视频文件中提取封面图
+    
+    Args:
+        video_path: 视频文件路径
+        thumbnail_output_path: 封面图输出路径
+        
+    Returns:
+        bool: 提取是否成功
+    """
+    try:
+        # 构建FFmpeg命令，提取视频第一帧作为封面图
+        command = [
+            'ffmpeg',
+            '-i', video_path,              # 输入文件
+            '-ss', '00:00:02.000',        # 截取时间点（第2秒）
+            '-vframes', '1',               # 只提取1帧
+            '-y',                          # 覆盖已存在的文件
+            thumbnail_output_path          # 输出文件
+        ]
+        
+        # 执行命令
+        subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        return True
+    except subprocess.CalledProcessError as e:
+        print(f"错误: 提取文件 {os.path.basename(video_path)} 的封面失败 - {e}")
+        return False
+
 def get_video_files(directory):
     """
     获取目录中所有支持的视频文件
@@ -85,29 +112,40 @@ def get_video_files(directory):
 
 def process_video_file(video_file, output_dir, quality=320):
     """
-    处理单个视频文件，提取音频并返回结果
+    处理单个视频文件，提取音频和封面图并返回结果
     """
     # 获取文件名（不含扩展名）
     base_name = os.path.splitext(os.path.basename(video_file))[0]
+    # 创建以视频名命名的子目录
+    video_output_dir = os.path.join(output_dir, base_name)
+    os.makedirs(video_output_dir, exist_ok=True)
+    
     # 构建输出音频文件路径（使用mp3格式）
-    audio_file = os.path.join(output_dir, f"{base_name}.mp3")
+    audio_file = os.path.join(video_output_dir, f"audio.mp3")
+    # 构建输出封面图文件路径（使用jpg格式）
+    thumbnail_file = os.path.join(video_output_dir, f"cover.jpg")
     
     # 提取音频
-    success = extract_audio_from_video(video_file, audio_file, quality)
+    audio_success = extract_audio_from_video(video_file, audio_file, quality)
+    # 提取封面图
+    thumbnail_success = extract_thumbnail_from_video(video_file, thumbnail_file)
     
     return {
         'video': video_file,
         'audio': audio_file,
-        'success': success
+        'thumbnail': thumbnail_file,
+        'audio_success': audio_success,
+        'thumbnail_success': thumbnail_success,
+        'success': audio_success and thumbnail_success  # 只有两者都成功才算成功
     }
 
-def batch_extract_audio(video_dir, output_dir, quality=320, max_workers=4):
+def batch_extract_media(video_dir, output_dir, quality=320, max_workers=4):
     """
-    批量提取音频
+    批量提取音频和封面图
     
     Args:
         video_dir: 视频文件所在目录
-        output_dir: 音频输出目录
+        output_dir: 输出目录
         quality: 音频质量（kbps）
         max_workers: 最大并发工作线程数
     """
@@ -121,7 +159,7 @@ def batch_extract_audio(video_dir, output_dir, quality=320, max_workers=4):
         print(f"提示: 在 {video_dir} 中没有找到支持的视频文件")
         return
     
-    print(f"找到 {len(video_files)} 个视频文件，开始提取音频...")
+    print(f"找到 {len(video_files)} 个视频文件，开始提取音频和封面图...")
     
     # 跟踪成功和失败的数量
     success_count = 0
@@ -147,14 +185,14 @@ def batch_extract_audio(video_dir, output_dir, quality=320, max_workers=4):
     print("\n处理完成！")
     print(f"成功: {success_count}")
     print(f"失败: {failed_count}")
-    print(f"音频文件已保存至: {output_dir}")
+    print(f"处理结果已保存至: {output_dir}")
 
 def main():
     """主函数"""
     # 解析命令行参数
-    parser = argparse.ArgumentParser(description='批量从视频文件中提取音频')
+    parser = argparse.ArgumentParser(description='批量从视频文件中提取音频和封面图')
     parser.add_argument('--video-dir', default='video', help='视频文件目录')
-    parser.add_argument('--output-dir', default='audio', help='音频输出目录')
+    parser.add_argument('--output-dir', default='audio', help='输出目录（包含以视频名命名的子目录）')
     parser.add_argument('--quality', type=int, default=320, help='音频质量（kbps），默认为320kbps')
     parser.add_argument('--threads', type=int, default=4, help='并发处理线程数，默认为4')
     
@@ -175,7 +213,7 @@ def main():
     output_dir = os.path.join(script_dir, args.output_dir)
     
     # 执行批量提取
-    batch_extract_audio(video_dir, output_dir, args.quality, args.threads)
+    batch_extract_media(video_dir, output_dir, args.quality, args.threads)
 
 if __name__ == "__main__":
     main()
