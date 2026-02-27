@@ -7,18 +7,46 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import 'aplayer/dist/APlayer.min.css'
-//获取当前页面的baseURL路径，用于拼接音频地址
+
+// 获取当前页面的baseURL路径，用于拼接音频地址
+// @ts-ignore
 const BaseURL = import.meta.env.BASE_URL;
 const playerRef = ref<HTMLElement>()
 let player: any | null = null
+
+// 异步加载音乐配置
+const loadMusicConfig = async () => {
+  try {
+    // 动态导入JSON配置文件
+    // @ts-ignore
+    const configModule = await import('../../../docsPublic/audio/music_config.json')
+    return configModule.default || configModule
+  } catch (error) {
+    console.warn('无法加载音乐配置文件，使用默认配置')
+    // 默认配置（保持原有配置作为后备）
+    return []
+  }
+}
 
 onMounted(async () => {
   if (playerRef.value) {
     // @ts-ignore 
     const APlayer = (await import('aplayer')).default
+    
+    // 加载音乐配置
+    const audioList = await loadMusicConfig()
+    
     // 在客户端环境中获取基础URL
     const clientBaseUrl = typeof window !== 'undefined' ? window.location.origin + BaseURL : BaseURL;
-    // 配置音乐列表
+    
+    // 为每个音频URL添加基础URL前缀
+    const processedAudioList = audioList.map(item => ({
+      ...item,
+      url: clientBaseUrl + item.url,
+      cover: clientBaseUrl + item.cover
+    }))
+    
+    // 配置音乐播放器
     const options = {
       container: playerRef.value,
       fixed: true,
@@ -33,33 +61,9 @@ onMounted(async () => {
       listFolded: true,
       listMaxHeight: '250px',
       lrcType: 3,
-      audio: [
-        {
-          name: '不得不爱',
-          artist: 'AI心夏',
-          url: clientBaseUrl + '/audio/【AI心夏】《不得不爱》/audio.mp3', 
-          cover: clientBaseUrl + '/audio/【AI心夏】《不得不爱》/cover.jpg', 
-          lrc: '',
-          theme: '#ebd0c2'
-        },
-        {
-          name: '生日快乐歌',
-          artist: 'AI心夏',
-          url: clientBaseUrl + '/audio/【AI心夏】生日快乐歌/audio.mp3', 
-          cover: clientBaseUrl + '/audio/【AI心夏】生日快乐歌/cover.jpg', 
-          lrc: '',
-          theme: '#46718b'
-        },
-        {
-          name: '有点甜',
-          artist: 'AI香奈美&AI心夏',
-          url: clientBaseUrl + '/audio/【AI香奈美&AI心夏】《有点甜》用心刻画最幸福的风格/audio.mp3', 
-          cover: clientBaseUrl + '/audio/【AI香奈美&AI心夏】《有点甜》用心刻画最幸福的风格/cover.jpg', 
-          lrc: '',
-          theme: '#f9f0ff'
-        }
-      ]
+      audio: processedAudioList
     }
+    
     player = new APlayer(options)
   }
 })

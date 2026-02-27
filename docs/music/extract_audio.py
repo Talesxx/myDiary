@@ -9,6 +9,8 @@ import os
 import sys
 import subprocess
 import argparse
+import json
+import re
 from concurrent.futures import ThreadPoolExecutor
 from tqdm import tqdm
 
@@ -110,6 +112,18 @@ def get_video_files(directory):
     
     return video_files
 
+def extract_artist_from_filename(filename):
+    """
+    从文件名中提取作者信息
+    匹配【】或[]中的内容作为作者名
+    """
+    # 匹配【】或[]中的内容
+    pattern = r'[\[\【]([^\]\】]+)[\]\】]'
+    matches = re.findall(pattern, filename)
+    if matches:
+        return matches[0].strip()
+    return "未知作者"
+
 def process_video_file(video_file, output_dir, quality=320):
     """
     处理单个视频文件，提取音频和封面图并返回结果
@@ -130,17 +144,22 @@ def process_video_file(video_file, output_dir, quality=320):
     # 提取封面图
     thumbnail_success = extract_thumbnail_from_video(video_file, thumbnail_file)
     
+    # 提取作者信息
+    artist = extract_artist_from_filename(base_name)
+    
     return {
         'video': video_file,
         'audio': audio_file,
         'thumbnail': thumbnail_file,
+        'name': base_name,  # 音乐名
+        'artist': artist,   # 作者
         'audio_success': audio_success,
         'thumbnail_success': thumbnail_success,
         'success': audio_success and thumbnail_success  # 只有两者都成功才算成功
     }
 
 def batch_extract_media(video_dir, output_dir, quality=320, max_workers=4):
-    """
+    """"
     批量提取音频和封面图
     
     Args:
@@ -164,6 +183,7 @@ def batch_extract_media(video_dir, output_dir, quality=320, max_workers=4):
     # 跟踪成功和失败的数量
     success_count = 0
     failed_count = 0
+    music_list = []  # 存储音乐信息列表
     
     # 使用线程池并行处理视频文件
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
@@ -178,8 +198,24 @@ def batch_extract_media(video_dir, output_dir, quality=320, max_workers=4):
             result = future.result()
             if result['success']:
                 success_count += 1
+                # 添加到音乐列表
+                music_list.append({
+                    'name': result['name'],
+                    'artist': result['artist'],
+                    'url': f"/audio/{result['name']}/audio.mp3",
+                    'cover': f"/audio/{result['name']}/cover.jpg",
+                    'lrc': '',
+                    'theme': '#b7daff'  # 默认主题色
+                })
             else:
                 failed_count += 1
+    
+    # 生成JSON配置文件
+    if music_list:
+        json_file_path = os.path.join(output_dir, 'music_config.json')
+        with open(json_file_path, 'w', encoding='utf-8') as f:
+            json.dump(music_list, f, ensure_ascii=False, indent=2)
+        print(f"音乐配置文件已生成: {json_file_path}")
     
     # 显示处理结果摘要
     print("\n处理完成！")
