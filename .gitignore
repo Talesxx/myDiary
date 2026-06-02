@@ -3,3 +3,4 @@ cache/
 build/
 dist/
 *.mp4
+.trae/
