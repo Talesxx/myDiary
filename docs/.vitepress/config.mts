@@ -126,6 +126,13 @@ export default withMermaid(defineConfig({
 
 
         ]
+      },
+      {
+        text: '汇编语言',
+        collapsed: true,
+        items: [
+          { text: '第一节 机器语言到汇编语言', link: '/Assembly/D1.第一节机器语言到汇编语言' }
+        ]
       }
     ],
     // https://icon-sets.iconify.design/simple-icons/page-3.html?keyword=simple-icons
