@@ -17,13 +17,13 @@ let player: any | null = null
 // 异步加载音乐配置
 const loadMusicConfig = async () => {
   try {
-    // 动态导入JSON配置文件
-    // @ts-ignore
-    const configModule = await import('../../../docsPublic/audio/music_config.json')
-    return configModule.default || configModule
+    // Vite 8 不允许从 public 目录 import，改用 fetch
+    const configUrl = BaseURL + 'audio/music_config.json'
+    const response = await fetch(configUrl)
+    if (!response.ok) throw new Error(`HTTP ${response.status}`)
+    return await response.json()
   } catch (error) {
-    console.warn('无法加载音乐配置文件，使用默认配置')
-    // 默认配置（保持原有配置作为后备）
+    console.warn('无法加载音乐配置文件，使用默认配置', error)
     return []
   }
 }
