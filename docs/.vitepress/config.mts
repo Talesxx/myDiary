@@ -5,9 +5,10 @@ import { withMermaid } from "vitepress-plugin-mermaid";
 // https://vitepress.dev/reference/site-config
 export default withMermaid(defineConfig({
 
-  // lastUpdated: true,
-  // cleanUrls: true,
-  // // 配置静态资源处理
+  lastUpdated: true,
+  cleanUrls: true,
+
+  // 配置静态资源处理
   vite: {
     publicDir: 'docsPublic',
   },
@@ -19,7 +20,7 @@ export default withMermaid(defineConfig({
     }
   },
   title: "我的小记",
-  description: "这是一个 VitePress Site",
+  description: "个人学习笔记 — 前端开发 · 高等数学 · 汇编语言 · 英语",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -139,6 +140,19 @@ export default withMermaid(defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Talesxx/myDiary' },
       { icon: 'gmail', link: 'mailto:talesxiao@gmail.com' }
-    ]
+    ],
+
+    footer: {
+      message: '基于 VitePress 构建',
+      copyright: '© 2024-2026 筱欣'
+    },
+
+    lastUpdated: {
+      text: '最后更新于',
+      formatOptions: {
+        dateStyle: 'short',
+        timeStyle: 'short'
+      }
+    },
   }
 }))

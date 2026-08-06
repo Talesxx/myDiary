@@ -1,6 +1,7 @@
 import { h } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import GlobalPlayer from './components/GlobalPlayer.vue'
+import './style.css'
 export default {
   ...DefaultTheme,
   Layout() {

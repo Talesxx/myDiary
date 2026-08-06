@@ -4,25 +4,33 @@ layout: home
 
 hero:
   name: "我的日记"
-  text: "A VitePress Site"
+  text: "记录学习，沉淀思考"
   tagline: 好记性不如烂笔头
   actions:
-    - theme: web
-      text: 前往文档
+    - theme: brand
+      text: 📖 前往文档
       link: /web/1.environment/newComputerInitialization
-    # - theme: alt
-    #   text: 前往
-    #   link: /api-examples
+    - theme: alt
+      text: ⭐ GitHub
+      link: https://github.com/Talesxx/myDiary
 
 features:
-  - title: web前端
-    details: 有关前端相关文档
+  - icon: 💻
+    title: web前端
+    details: 环境配置、npm 包开发、WebRTC、浏览器渲染、React、TypeScript 踩坑记录
     link: /web/1.environment/newComputerInitialization
-  - title: 数学
-    details: 有关数学的笔记
+  - icon: 📐
+    title: 高等数学
+    details: 从极限导数到线性代数，完整的数学笔记与错题整理
     link: /AdvancedMathematics/1.对数计算法则
-  - title: 英语
-    details: 英语学习
+  - icon: 📖
+    title: 英语学习
+    details: 英语音标与发音技巧，夯实语言基础
+    link: /English/音标
+  - icon: 💾
+    title: 汇编语言
+    details: 从机器语言到汇编语言的底层编程之旅
+    link: /Assembly/D1.第一节机器语言到汇编语言
 ---
 
 
