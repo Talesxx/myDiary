@@ -16,6 +16,14 @@
     "theme": "#b7daff"
   },
   {
+    "name": "【AI心夏】地球最可爱",
+    "artist": "AI心夏",
+    "url": "/audio/【AI心夏】地球最可爱/audio.mp3",
+    "cover": "/audio/【AI心夏】地球最可爱/cover.jpg",
+    "lrc": "",
+    "theme": "#b7daff"
+  },
+  {
     "name": "【AI心夏】生日快乐歌",
     "artist": "AI心夏",
     "url": "/audio/【AI心夏】生日快乐歌/audio.mp3",
@@ -24,10 +32,50 @@
     "theme": "#b7daff"
   },
   {
+    "name": "【AI忧雾AI芙拉薇雅】情人劫",
+    "artist": "AI忧雾AI芙拉薇雅",
+    "url": "/audio/【AI忧雾AI芙拉薇雅】情人劫/audio.mp3",
+    "cover": "/audio/【AI忧雾AI芙拉薇雅】情人劫/cover.jpg",
+    "lrc": "",
+    "theme": "#b7daff"
+  },
+  {
+    "name": "【AI玛德蕾娜】脑袋空空",
+    "artist": "AI玛德蕾娜",
+    "url": "/audio/【AI玛德蕾娜】脑袋空空/audio.mp3",
+    "cover": "/audio/【AI玛德蕾娜】脑袋空空/cover.jpg",
+    "lrc": "",
+    "theme": "#b7daff"
+  },
+  {
+    "name": "【AI珐格兰丝】 迷人的危险",
+    "artist": "AI珐格兰丝",
+    "url": "/audio/【AI珐格兰丝】 迷人的危险/audio.mp3",
+    "cover": "/audio/【AI珐格兰丝】 迷人的危险/cover.jpg",
+    "lrc": "",
+    "theme": "#b7daff"
+  },
+  {
+    "name": "【AI白墨】落差",
+    "artist": "AI白墨",
+    "url": "/audio/【AI白墨】落差/audio.mp3",
+    "cover": "/audio/【AI白墨】落差/cover.jpg",
+    "lrc": "",
+    "theme": "#b7daff"
+  },
+  {
     "name": "【AI香奈美&AI心夏】《有点甜》用心刻画最幸福的风格",
     "artist": "AI香奈美&AI心夏",
     "url": "/audio/【AI香奈美&AI心夏】《有点甜》用心刻画最幸福的风格/audio.mp3",
     "cover": "/audio/【AI香奈美&AI心夏】《有点甜》用心刻画最幸福的风格/cover.jpg",
+    "lrc": "",
+    "theme": "#b7daff"
+  },
+  {
+    "name": "【AI香奈美AI米雪儿】鸳鸯戏",
+    "artist": "AI香奈美AI米雪儿",
+    "url": "/audio/【AI香奈美AI米雪儿】鸳鸯戏/audio.mp3",
+    "cover": "/audio/【AI香奈美AI米雪儿】鸳鸯戏/cover.jpg",
     "lrc": "",
     "theme": "#b7daff"
   }
