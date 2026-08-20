@@ -1,13 +1,13 @@
 # 环境安装
 
-## 第一步：在node安装之前推荐使用mvn去管理node版本，
+## 第一步：在node安装之前推荐使用nvm去管理node版本，
 
 `不推荐直接安装node，在开发多个项目时可能用到不同的node版本。在此推荐使用mvn管理node版本`
 
 <font style="color:#DF2A3F;">⚠如果你的系统已经安装了node，请先卸载它。根据你安装方不同去卸载node这里不做说明.</font>
 
 
-### windows 安装（window不在推荐NVM，NVM for window已不在正常维护）
+### windows 安装（window不在推荐NVM，NVM for window已不在正常维护，请使用fnm代替）
 
 在window中直接下载nvm安装包安装即可，安装完成后重启命令行
 [github](https://github.com/coreybutler/nvm-windows)
