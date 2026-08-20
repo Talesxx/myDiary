@@ -7,7 +7,7 @@
 <font style="color:#DF2A3F;">⚠如果你的系统已经安装了node，请先卸载它。根据你安装方不同去卸载node这里不做说明.</font>
 
 
-### windows 安装
+### windows 安装（window不在推荐NVM，NVM for window已不在正常维护）
 
 在window中直接下载nvm安装包安装即可，安装完成后重启命令行
 [github](https://github.com/coreybutler/nvm-windows)
