@@ -104,6 +104,13 @@ export default withMermaid(defineConfig({
             ]
           },
           {
+            text: '性能优化',
+            collapsed: true,
+            items: [
+              { text: 'Canvas 性能优化', link: '/web/7.performance/canvas性能优化' },
+            ]
+          },
+          {
             text: '其他',
             collapsed: true,
             items: [
