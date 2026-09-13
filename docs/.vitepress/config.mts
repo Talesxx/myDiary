@@ -108,6 +108,7 @@ export default withMermaid(defineConfig({
             collapsed: true,
             items: [
               { text: 'Canvas 性能优化', link: '/web/7.performance/canvas性能优化' },
+              { text: '沙盒内 dev 启动耗时优化', link: '/web/7.performance/dev启动耗时优化' },
             ]
           },
           {
